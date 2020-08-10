@@ -23,12 +23,17 @@ public class NEOEncoder extends SubsystemBase {
    public CANEncoder encoder = new CANEncoder(motor);
 
   public NEOEncoder() {
-    motor.set(0);
-    while (encoder.getPosition()== 3.978) {
-      motor.set(0.7);
-    }
+    
+    
   }
 
+  public void Spin() {
+    motor.set(0.7);
+  }
+
+  public void Go() {
+    motor.set(0);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
