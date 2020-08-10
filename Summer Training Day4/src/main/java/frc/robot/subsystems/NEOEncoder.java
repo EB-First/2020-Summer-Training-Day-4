@@ -7,7 +7,11 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -16,8 +20,8 @@ public class NEOEncoder extends SubsystemBase {
    * Creates a new NEOEncoder.
    */
 
-   public CANSparkMax motor = new CANSparkMax(0);
-   public CANEncoder encoder = new 
+   private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
+   public CANEncoder encoder = new CANEncoder(motor);
   public NEOEncoder() {
 
 
