@@ -22,6 +22,7 @@ public class NEOEncoder extends SubsystemBase {
 
    private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
    public CANEncoder encoder = new CANEncoder(motor);
+   
   public NEOEncoder() {
 
 
