@@ -11,7 +11,6 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -22,10 +21,12 @@ public class NEOEncoder extends SubsystemBase {
 
    private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
    public CANEncoder encoder = new CANEncoder(motor);
-   
+
   public NEOEncoder() {
-
-
+    motor.set(0);
+    while (encoder.getPosition()== 3.978) {
+      motor.set(0.7);
+    }
   }
 
   @Override
