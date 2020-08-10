@@ -7,14 +7,19 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class NEOEncoder extends SubsystemBase {
   /**
    * Creates a new NEOEncoder.
    */
+
+   public CANSparkMax motor = new CANSparkMax(0);
+   public CANEncoder encoder = new 
   public NEOEncoder() {
+
 
   }
 
