@@ -16,4 +16,5 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public final double count = 1024/2*Math.PI*5;
 }

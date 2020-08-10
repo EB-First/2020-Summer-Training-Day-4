@@ -7,39 +7,20 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
-
-
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class NEOEncoder extends SubsystemBase {
+
+public class Ultrasonic extends SubsystemBase {
   /**
-   * Creates a new NEOEncoder.
+   * Creates a new Ultrasonic.
    */
-
-   private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
-   private CANEncoder encoder = new CANEncoder(motor);
-
-  public NEOEncoder() {
+  public Ultrasonic() {
+    AnalogInput ultrasonic = new AnalogInput(0);
     
-    
+
   }
 
-  public void spin() {
-    motor.set(0.7);
-  }
-
-  public void stop() {
-    motor.set(0);
-  }
-
-  public double getEncoder() {
-    return encoder.getPosition();
-  }
-
-  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
