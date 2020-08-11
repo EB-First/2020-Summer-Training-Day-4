@@ -28,7 +28,8 @@ public class RobotContainer {
   public static NEOEncoder m_NEOEncoder = new NEOEncoder();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  
+  public static Spin m_Spin = new Spin();
+  public static Stop m_Stop = new Stop();
 
 
   /**

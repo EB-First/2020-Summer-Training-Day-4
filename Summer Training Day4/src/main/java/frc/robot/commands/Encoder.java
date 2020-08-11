@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.NEOEncoder;
 
 public class Encoder extends CommandBase {
   /**
@@ -27,10 +26,8 @@ public class Encoder extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    motor.set(0);
-    while(RobotContainer.m_NEOEncoder.getEncoder() == 32 ) {
-      
-    }
+    when
+    RobotContainer.m_NEOEncoder.spin();
   }
 
   // Called once the command ends or is interrupted.
