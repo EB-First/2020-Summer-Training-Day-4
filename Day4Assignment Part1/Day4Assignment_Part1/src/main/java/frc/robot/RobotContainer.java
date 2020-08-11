@@ -8,11 +8,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.GetCounts;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SensorSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -26,6 +30,11 @@ public class RobotContainer {
   public static SensorSubsystem m_SensorSubsystem = new SensorSubsystem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  public static GetCounts m_GetCounts = new GetCounts();
+
+  protected GenericHID joystick = new Joystick(0);
+  private JoystickButton joybutton1 = new JoystickButton(joystick, 0);
+
 
 
 
@@ -44,6 +53,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    joybutton1.whileHeld(new GetCounts());
   }
 
 
