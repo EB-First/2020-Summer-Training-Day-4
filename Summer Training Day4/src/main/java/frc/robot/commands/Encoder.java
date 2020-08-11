@@ -26,8 +26,11 @@ public class Encoder extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    when
-    RobotContainer.m_NEOEncoder.spin();
+    RobotContainer.m_NEOEncoder.stop();
+     while(RobotContainer.m_NEOEncoder.getEncoder()== 32) {
+      RobotContainer.m_NEOEncoder.spin();
+     }
+    
   }
 
   // Called once the command ends or is interrupted.

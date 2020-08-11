@@ -19,12 +19,12 @@ public class NEOEncoder extends SubsystemBase {
    * Creates a new NEOEncoder.
    */
 
-   private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
-   private CANEncoder encoder = new CANEncoder(motor);
+   private CANSparkMax motor;
+   private CANEncoder encoder; 
 
   public NEOEncoder() {
-    
-    
+    motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
+    encoder = new CANEncoder(motor);
   }
 
   public void spin() {

@@ -13,8 +13,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.NEOEncoder;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Spin;
-import frc.robot.commands.Stop;
+import frc.robot.commands.Encoder;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -28,8 +27,7 @@ public class RobotContainer {
   public static NEOEncoder m_NEOEncoder = new NEOEncoder();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  public static Spin m_Spin = new Spin();
-  public static Stop m_Stop = new Stop();
+  public static Encoder encoder = new Encoder();
 
 
   /**
