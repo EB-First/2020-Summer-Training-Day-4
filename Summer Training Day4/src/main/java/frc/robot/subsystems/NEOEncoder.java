@@ -11,7 +11,8 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 
-
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class NEOEncoder extends SubsystemBase {
@@ -21,10 +22,12 @@ public class NEOEncoder extends SubsystemBase {
 
    private CANSparkMax motor;
    private CANEncoder encoder; 
+   private Ultrasonic ultrasonic;
 
   public NEOEncoder() {
     motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
     encoder = new CANEncoder(motor);
+    ultrasonic = new Ultrasonic(1,2);
   }
 
   public void spin() {
@@ -38,7 +41,10 @@ public class NEOEncoder extends SubsystemBase {
   public double getEncoder() {
     return encoder.getPosition();
   }
-
+  
+  public double getUltrasonic() {
+    return ultrasonic.getRangeInches();
+  }
   
   @Override
   public void periodic() {
