@@ -17,5 +17,13 @@ package frc.robot;
  */
 public final class Constants {
 
-    public int wheelRadius = 5;
+    public static int WHEEL_RADIUS = 5;
+    public static int ENCODER_RESOLUTION = 1024;
+    public static int CAN_PORT = 0;
+
+    public static int ULTRASONIC_PORT_1 = 1;
+    public static int ULTRASONIC_PORT_2 = 2;
+
+    public static int OPERATOR_GAMEPAD_PORT = 0;
+    public static int BUTTON_1_PORT = 0;
 }
