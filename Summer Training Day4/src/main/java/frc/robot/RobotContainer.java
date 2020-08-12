@@ -13,7 +13,8 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.NEOEncoder;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Encoder;
+import frc.robot.commands.GoToObject;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -27,7 +28,7 @@ public class RobotContainer {
   public static NEOEncoder m_NEOEncoder = new NEOEncoder();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  public static Encoder encoder = new Encoder();
+  public static GoToObject m_goToObject = new GoToObject();
 
 
   /**

@@ -30,8 +30,11 @@ public class NEOEncoder extends SubsystemBase {
     ultrasonic = new Ultrasonic(1,2);
   }
 
-  public void Ultrasonic() {
-    while()
+  public void goToObject() {
+    while(encoder.getPosition()*1024<9000) {    //absoulute or relative??
+      motor.set(1);
+    }
+    motor.set(0);
 
 
 
@@ -43,7 +46,11 @@ public class NEOEncoder extends SubsystemBase {
       RobotContainer.m_NEOEncoder.spin();
       */
      
+  }
 
+  public void motorStop() {
+    motor.set(0);
+    
   }
   public double getEncoder() {
     return encoder.getPosition();
