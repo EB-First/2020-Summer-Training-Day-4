@@ -18,5 +18,5 @@ package frc.robot;
  */
 public final class Constants {
     
-    public final double ENCODER_COUNTS = RobotContainer.m_NEOEncoder.getUltrasonic()*1024/2*Math.PI*5;
+    
 }

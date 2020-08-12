@@ -10,12 +10,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
+
 public class Encoder extends CommandBase {
   /**
    * Creates a new Encoder.
    */
   public Encoder() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.m_NEOEncoder);
   }
 
   // Called when the command is initially scheduled.
@@ -26,10 +28,7 @@ public class Encoder extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_NEOEncoder.stop();
-     while(RobotContainer.m_NEOEncoder.getEncoder()== 32) {
-      RobotContainer.m_NEOEncoder.spin();
-     }
+    
     
   }
 
