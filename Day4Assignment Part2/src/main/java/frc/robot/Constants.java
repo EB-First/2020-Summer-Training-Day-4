@@ -26,4 +26,7 @@ public final class Constants {
 
     public static int OPERATOR_GAMEPAD_PORT = 0;
     public static int BUTTON_1_PORT = 0;
+
+    public static double MOTOR_OFF = 0;
+    public static double MOTOR_ON = 0.8;
 }

@@ -36,7 +36,7 @@ public class SensorSubsystem extends SubsystemBase {
   }
 
   public void setMotorOff() { // kills power to motor
-    can.set(0);
+    can.set(Constants.MOTOR_OFF);
   }
 
   public double calulateDistance() { // calculate the distance from the robot to the nearest obstacle
@@ -58,9 +58,9 @@ public class SensorSubsystem extends SubsystemBase {
   public void driveToDistance(int ticks, int currentTicks) { // logic that determines if the robot has reached its target
 
     if(currentTicks < ticks) {
-      can.set(0.8);
+      can.set(Constants.MOTOR_ON);
     } else if(currentTicks >= ticks) {
-      can.set(0);
+      can.set(Constants.MOTOR_OFF);
     }
   }
 }
