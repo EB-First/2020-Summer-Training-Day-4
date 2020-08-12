@@ -31,7 +31,7 @@ public class NEOEncoder extends SubsystemBase {
   }
 
   public void goToObject() {
-    while(encoder.getPosition()*1024<9000) {    //absoulute or relative??
+    while(encoder.getPosition()*1024<ultrasonic.getRangeInches()*(1024/2*Math.PI*5)) {    //absoulute or relative??
       motor.set(1);
     }
     motor.set(0);
@@ -40,25 +40,14 @@ public class NEOEncoder extends SubsystemBase {
 
 
 
-    /*
-    RobotContainer.m_NEOEncoder.stop();
-     while(RobotContainer.m_NEOEncoder.getEncoder()== ENCODER_COUNTS) {
-      RobotContainer.m_NEOEncoder.spin();
-      */
-     
   }
 
   public void motorStop() {
     motor.set(0);
     
   }
-  public double getEncoder() {
-    return encoder.getPosition();
-  }
+
   
-  public double getUltrasonic() {
-    return ultrasonic.getRangeInches();
-  }
   
   @Override
   public void periodic() {

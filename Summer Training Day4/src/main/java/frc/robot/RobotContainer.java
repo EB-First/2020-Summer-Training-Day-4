@@ -14,6 +14,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.NEOEncoder;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.GoToObject;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -30,12 +31,15 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static GoToObject m_goToObject = new GoToObject();
 
+  private Joystick joy1 = new Joystick(1);
+  private JoystickButton goButton = new JoystickButton(joy1,2);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+
     configureButtonBindings();
   }
 
@@ -46,6 +50,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    goButton.whileHeld(new GoToObject());
   }
 
 
