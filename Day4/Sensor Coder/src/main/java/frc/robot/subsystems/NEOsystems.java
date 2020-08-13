@@ -17,6 +17,7 @@ public class NEOEncoder extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
+  //Finished
   private Ultrasonic sensor = new Ultrasonic(0);
   private CANSparkMax motor = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType.kBrushless);
   private CANEncoder encoder = new CANEncoder(motor);
