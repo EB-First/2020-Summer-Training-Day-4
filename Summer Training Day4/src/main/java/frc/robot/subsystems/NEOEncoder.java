@@ -12,7 +12,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+
 
 public class NEOEncoder extends SubsystemBase {
   /**
@@ -31,15 +31,10 @@ public class NEOEncoder extends SubsystemBase {
   }
 
   public void goToObject() {
-    while(encoder.getPosition()*1024<ultrasonic.getRangeInches()*(1024/2*Math.PI*5)) {    //absoulute or relative??
+    while(encoder.getPosition()*1024<ultrasonic.getRangeInches()*(1024/2*Math.PI*5)) {    
       motor.set(1);
     }
     motor.set(0);
-
-
-
-
-
   }
 
   public void motorStop() {
