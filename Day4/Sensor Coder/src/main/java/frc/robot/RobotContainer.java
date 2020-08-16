@@ -34,7 +34,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     if (joy1.whenPressed(true)) {
-      RobotContainer.m_NEOsystems.getEncoder();
+      RobotContainer.m_NEOsystems.encoderControl();
     }
   }
 
