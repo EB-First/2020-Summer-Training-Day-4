@@ -19,7 +19,7 @@ public class NEOEncoder extends SubsystemBase {
    */
   //Finished
   private Ultrasonic sensor = new Ultrasonic(0);
-  private CANSparkMax motor = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private CANSparkMax motor = new CANSparkMax(0, CANSparkMaxLowLevel.MotorType.kBrushless);
   private CANEncoder encoder = new CANEncoder(motor);
 public NEOEncoder() {
    
@@ -30,14 +30,18 @@ public NEOEncoder() {
   public motorStop() {
     motor.set(0);
     }
-    public double getEncoder() {
-      sensor.getPosition();
-      while (encoder < 30) {
+  public position() {
+    encoder.getPosition();
+  }
+  public void encoderControl() {
+      if (position() <= 60) {
         execute(motorSpin());
         encoder++;
-      }
+      } else if (position() > 60 ) {
       run.motorStop();
-   }
+      }
+  }
+   
 
   @Override
   public void periodic() {
