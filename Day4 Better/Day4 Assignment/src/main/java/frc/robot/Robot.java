@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2017-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,61 +7,107 @@
  
 package frc.robot;
  
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.NEOEncoder;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Traveling;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
- 
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
 /**
-* This class is where the bulk of the robot should be declared.  Since Command-based is a
-* "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
-* periodic methods (other than the scheduler calls).  Instead, the structure of the robot
-* (including subsystems, commands, and button mappings) should be declared here.
+* The VM is configured to automatically run this class, and to call the functions corresponding to
+* each mode, as described in the TimedRobot documentation. If you change the name of this class or
+* the package after creating this project, you must also update the build.gradle file in the
+* project.
 */
-public class RobotContainer {
- // The robot's subsystems and commands are defined here...
- private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
- public static NEOEncoder m_NEOEncoder = new NEOEncoder();
+public class Robot extends TimedRobot {
+ private Command m_autonomousCommand;
  
- private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
- public static Traveling m_traveling = new Traveling();
- 
- private Joystick joystick = new Joystick(1);
- private Button button = new JoystickButton(joystick,2);
+ private RobotContainer m_robotContainer;
  
  /**
-  * The container for the robot.  Contains subsystems, OI devices, and commands.
+  * This function is run when the robot is first started up and should be used for any
+  * initialization code.
   */
- public RobotContainer() {
-   // Configure the button bindings
- 
-   configureButtonBindings();
+ @Override
+ public void robotInit() {
+   // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+   // autonomous chooser on the dashboard.
+   m_robotContainer = new RobotContainer();
  }
  
  /**
-  * Use this method to define your button->command mappings.  Buttons can be created by
-  * instantiating a {@link GenericHID} or one of its subclasses ({@link
-  * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
-  * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-  */
- private void configureButtonBindings() {
-   button.whenPressed(new Traveling());
- }
- 
- 
- /**
-  * Use this to pass the autonomous command to the main {@link Robot} class.
+  * This function is called every robot packet, no matter the mode. Use this for items like
+  * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
   *
-  * @return the command to run in autonomous
+  * <p>This runs after the mode specific periodic functions, but before
+  * LiveWindow and SmartDashboard integrated updating.
   */
- public Command getAutonomousCommand() {
-   // An ExampleCommand will run in autonomous
-   return m_autoCommand;
+ @Override
+ public void robotPeriodic() {
+   // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
+   // commands, running already-scheduled commands, removing finished or interrupted commands,
+   // and running subsystem periodic() methods.  This must be called from the robot's periodic
+   // block in order for anything in the Command-based framework to work.
+   CommandScheduler.getInstance().run();
+ }
+ 
+ /**
+  * This function is called once each time the robot enters Disabled mode.
+  */
+ @Override
+ public void disabledInit() {
+ }
+ 
+ @Override
+ public void disabledPeriodic() {
+ }
+ 
+ /**
+  * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
+  */
+ @Override
+ public void autonomousInit() {
+   m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+ 
+   // schedule the autonomous command (example)
+   if (m_autonomousCommand != null) {
+     m_autonomousCommand.schedule();
+   }
+ }
+ 
+ /**
+  * This function is called periodically during autonomous.
+  */
+ @Override
+ public void autonomousPeriodic() {
+ }
+ 
+ @Override
+ public void teleopInit() {
+   // This makes sure that the autonomous stops running when
+   // teleop starts running. If you want the autonomous to
+   // continue until interrupted by another command, remove
+   // this line or comment it out.
+   if (m_autonomousCommand != null) {
+     m_autonomousCommand.cancel();
+   }
+ }
+ 
+ /**
+  * This function is called periodically during operator control.
+  */
+ @Override
+ public void teleopPeriodic() {
+ }
+ 
+ @Override
+ public void testInit() {
+   // Cancels all running commands at the start of test mode.
+   CommandScheduler.getInstance().cancelAll();
+ }
+ 
+ /**
+  * This function is called periodically during test mode.
+  */
+ @Override
+ public void testPeriodic() {
  }
 }
