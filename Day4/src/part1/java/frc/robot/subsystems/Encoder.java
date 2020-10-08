@@ -23,4 +23,8 @@ public class Encoder extends SubsystemBase{
 	public void stop(){
 		motor.set(0);
 	}
+	@Override
+  	public boolean isFinished() {
+    		return false;
+  	}
 }
