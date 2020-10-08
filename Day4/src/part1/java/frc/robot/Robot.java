@@ -10,6 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +27,10 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private Joystick j = new Joystick(0);
+  private CANSparkMax motor = new CANSparkMax(1,CANSparkMaxLowLevel.MotorType.kBrushless);
+  private CANEncoder enc = new CANEncoder(motor);
+  private int encCt = 1000;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -93,6 +101,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if(j.getRawButton(1))//start on square button press
+    {
+      enc.setPosition(0);//reset encoders
+      while(enc.getPosition()<encCt)
+      {
+        motor.set(1);
+      }
+      motor.set(0);
+    }
   }
 
   /**
