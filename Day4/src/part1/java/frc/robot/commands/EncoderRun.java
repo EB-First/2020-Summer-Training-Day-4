@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Encoder;
 
-public class EncoderRun{
+public class EncoderRun extends CommandBase{
 	public EncoderRun()
 	{
 		addRequirements(RobotContainer.m_Encoder);
