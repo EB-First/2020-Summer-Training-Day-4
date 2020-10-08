@@ -20,5 +20,8 @@ public class MotorDistRun{
 	public void end(){
 		RobotContainer.m_MotorDist.stop();
 	}
-
+	@Override
+  	public boolean isFinished() {
+    		return false;
+  	}
 }
