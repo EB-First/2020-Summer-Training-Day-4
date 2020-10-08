@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.MotorDist;
 
-public class MotorDistRun{
+public class MotorDistRun extends CommandBase{
 	public MotorDistRun()
 	{
 		addRequirements(RobotContainer.m_MotorDist);
