@@ -11,7 +11,7 @@ public class MotorDist extends SubsystemBase{
 	private CANEncoder enc = new CANEncoder(motor);
 	private Ultrasonic dist = new Ultrasonic(Constants.US_PORT_1,Constants.US_PORT_2);
 	private int encCt;
-	public Encoder(){
+	public MotorDist(){
 		dist.setAutomaticMode(true);
 	}
 	public void run(){
