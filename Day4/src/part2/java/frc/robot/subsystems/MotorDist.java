@@ -9,11 +9,13 @@ import frc.robot.Constants;
 public class MotorDist extends SubsystemBase{
 	private CANSparkMax motor = new CANSparkMax(Constants.MOTOR_PORT,CANSparkMaxLowLevel.MotorType.kBrushless);
 	private CANEncoder enc = new CANEncoder(motor);
+	private Ultrasonic dist = new Ultrasonic(Constants.US_PORT_1,Constants.US_PORT_2);
 	private int encCt;
-	public Encoder(int dist){
-		encCt = dist/(2*Constants.RD*Math.PI)*enc.getCountsPerRevolution();
+	public Encoder(){
+		dist.setAutomaticMode(true);
 	}
 	public void run(){
+		encCt = dist.getRangeInches()/(2*Constants.RD*Math.PI)*enc.getCountsPerRevolution();
 		enc.setPosition(0);
 		while(enc.getPosition()<encCt)
 		{
